@@ -1,0 +1,19 @@
+<h1>New Game</h1>
+
+<div class="container">
+  <div class="letters">
+    <% @letters.each do |letter|%> 
+      <div><%=letter%></div>
+    <% end %>
+  </div>
+</div>
+
+<form action="/score" method="post">
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<%= hidden_field_tag :letters, @letters %> 
+  <label for="word">What is the longest word you can find?</label><br>
+  <input type="text" id="word" name="word">
+  <input type="submit" value="Play">
+</form>
+
+<%= link_to "Reset Score", reset_score_path, method: :post%>
